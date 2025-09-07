@@ -1,0 +1,8 @@
+# General Python ignore patterns
+__pycache__/
+*.pyc
+dist/
+build/
+.venv/
+.mypy_cache/
+*.egg-info/
