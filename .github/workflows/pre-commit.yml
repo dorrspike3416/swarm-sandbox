@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # uv を導入（高速）
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          uv --version
+
+      # 依存解決（pyproject.toml / uv.lockに従う）
+      - name: Sync deps
+        run: uv sync
+
+      # pre-commit をインストールしてフック実行
+      - name: Run pre-commit (all files)
+        run: |
+          uv run pre-commit install
+          uv run pre-commit run --all-files
+
+      # ついでにテストなど
+      - name: Run tests
+        run: uv run pytest -q
