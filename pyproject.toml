@@ -8,7 +8,7 @@ requires-python = ">=3.10"
 dependencies = [
     "numpy",
     "matplotlib",
-    # 他の依存関係
+    "pre-commit",
 ]
 
 [tool.black]
