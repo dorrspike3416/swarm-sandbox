@@ -1,3 +1,16 @@
+[project]
+name = "swarm-sandbox"
+version = "0.1.0"
+description = "群知能シミュレーション・スイート"
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "numpy",
+    "matplotlib",
+    # 他の依存関係
+]
+
 [tool.black]
 line-length = 88
 target-version = ["py310"]
