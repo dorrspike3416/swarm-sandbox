@@ -9,22 +9,17 @@ swarm-sandbox は郡知能（swarm intelligence）の実験を行うためのリ
 
 ## セットアップ
 
-以下は開発環境をセットアップする手順の一例です。
+以下は `uv` を利用して開発環境をセットアップする手順です。
 
 ```bash
 # リポジトリの取得
- git clone <REPOSITORY_URL>
- cd swarm-sandbox
+git clone <REPOSITORY_URL>
+cd swarm-sandbox
 
-# 仮想環境の作成（任意）
- python -m venv .venv
- source .venv/bin/activate
-
-# 依存関係のインストール
- pip install -e .
-
-# テストの実行
- pytest
+# 依存関係の同期と動作確認（3コマンド）
+uv sync
+uv run python -V
+uv run pytest -q   # テストが整備され次第
 ```
 
 ## ライセンス
