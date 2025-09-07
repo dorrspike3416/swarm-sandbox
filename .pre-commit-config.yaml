@@ -27,3 +27,12 @@ repos:
     rev: v1.6.1
     hooks:
       - id: mypy
+
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: v0.19.1
+    hooks:
+      - id: gitlint
+        stages: [commit-msg]
+        args:
+          - --contrib=conventional_commits   # Conventionalルールを有効化
+          - --body-max-line-length=0         # 本文の行長制限を緩める例
